@@ -60,7 +60,7 @@ public class Main {
         System.out.println("6. - Modificar cliente");
         System.out.println("7. - Modificar producto");
         System.out.println("8. - Realizar un pedido");
-        System.out.println("9. - Salir");
+        System.out.println("9. - Salir ");
         return scanner.nextInt();
     }
 
