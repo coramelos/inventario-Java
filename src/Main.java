@@ -83,7 +83,8 @@ public class Main {
             clienteController.mostrarClientes();               
                 break;
 
-            case MOSTRAR_TODOS_PRODUCTOS:               
+            case MOSTRAR_TODOS_PRODUCTOS: 
+            productoController.mostrarProductos();              
                 break;
 
             case MODIFICAR_CLIENTE:                

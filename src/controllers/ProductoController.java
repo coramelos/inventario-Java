@@ -1,6 +1,9 @@
 package controllers;
 
 import java.util.Scanner;
+import java.util.Map.Entry;
+
+import classes.Producto;
 import services.ProductoService;
 
 public class ProductoController {
@@ -12,6 +15,16 @@ public class ProductoController {
     }
 
     
+
+
+    public void mostrarProductos(){
+
+        for(Entry<String, Producto> producto : this.productoService.obtenerProductos().entrySet()){
+
+            System.out.println(producto.getValue().toString());
+        }
+
+    }
 
     public void crearProducto() {
         String numeroRreferencia = pedirReferencia();
