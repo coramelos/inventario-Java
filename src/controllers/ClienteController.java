@@ -39,6 +39,7 @@ public class ClienteController {
             clienteService.setDatosCliente(clientes, idClienteSelect, emailNuevo, nombreNuevo, apellidosNuevos,
              contraseniaNueva, activacionNueva);
 
+             System.out.println("El cliente ha sido modificado correctamente");
 
         }else{
             System.out.println("El cliente no existe");

@@ -71,4 +71,26 @@ public class ProductoRepository {
         return this.productos;
 
     }
+
+    public void actualizarProducto(Producto producto) {
+
+
+        try  {
+
+            Connection conexion = DriverManager.getConnection(URL, USER, PASSWORD);
+            Statement sentencia = conexion.createStatement();
+
+            String sqlSentencia = "UPDATE productos SET nombre =\'" + producto.getNombre() + "\', precio = " + producto.getPrecio() +
+            ", stock = " + producto.getStock() +
+               " WHERE (numeroReferencia =\'" + producto.getNumeroReferencia() +"\');";
+            
+            
+            sentencia.executeUpdate(sqlSentencia);
+            conexion.close();
+
+             } catch (SQLException exception) {
+                System.out.println(exception.getMessage());
+
+             }
+    }
 }

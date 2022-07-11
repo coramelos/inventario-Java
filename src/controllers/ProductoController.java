@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Map.Entry;
 
@@ -60,4 +61,38 @@ public class ProductoController {
         System.out.println("Introduce el stock del producto");
         return scanner.nextInt();
     }
+
+
+
+
+    public void modificarProducto() {
+        Scanner scanner = new Scanner(System.in);
+        HashMap<String, Producto> productos = productoService.obtenerProductos();
+
+        System.out.println("Introduce el identificador del producto que deseas modificar");
+        mostrarProductos();
+        String idProductoSelect = scanner.nextLine();
+
+        if(productos.containsKey(idProductoSelect)){
+
+            String nombreNuevo = pedirNomre();
+            float precioNuevo = pedirPrecio();
+            int stockNuevo = pedirStock();
+
+            this.productoService.settearDatosProducto(productos, idProductoSelect, nombreNuevo, precioNuevo, stockNuevo);
+
+            System.out.println("El producto ha sido modificado correctamente");
+
+        }else{
+            System.out.println("El producto no existe");
+            modificarProducto();
+
+        }
+    }
+
+
+
+
+
+
 }

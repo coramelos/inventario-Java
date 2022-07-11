@@ -85,11 +85,11 @@ public class Main {
                 break;
 
             case MODIFICAR_CLIENTE:
-            clienteController.modificarCliente();
-        
+            clienteController.modificarCliente();        
                 break;
 
             case MODIFICAR_PRODUCTO:
+            productoController.modificarProducto();
                 break;
 
             case REALIZAR_PEDIDO:
