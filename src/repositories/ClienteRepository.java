@@ -41,38 +41,63 @@ public class ClienteRepository {
 
     }
 
-    public HashMap<String, Cliente> obtenerClientes(){
+    public HashMap<String, Cliente> obtenerClientes() {
 
         try {
             Connection conexion = DriverManager.getConnection(URL, USER, PASSWORD);
             Statement sentencia = conexion.createStatement();
 
-
             String sqlSentencia = "SELECT * FROM clientes";
 
             ResultSet result = sentencia.executeQuery(sqlSentencia);
 
-            while(result.next()){
-               String dni = result.getString(1);
-               String email = result.getString(2);
-               String nombre = result.getString (3);
-               String apellidos = result.getString (4);
-               String contrasenia = result.getString (5);
-               boolean activo = result.getBoolean (6);
+            while (result.next()) {
+                String dni = result.getString(1);
+                String email = result.getString(2);
+                String nombre = result.getString(3);
+                String apellidos = result.getString(4);
+                String contrasenia = result.getString(5);
+                boolean activo = result.getBoolean(6);
 
-               Cliente cliente = new Cliente (dni, email, nombre, apellidos, contrasenia, activo);
-               this.clientes.put(cliente.getDNI(), cliente);
+                Cliente cliente = new Cliente(dni, email, nombre, apellidos, contrasenia, activo);
+                this.clientes.put(cliente.getDNI(), cliente);
             }
 
             conexion.close();
             return this.clientes;
 
-
-        } catch (SQLException exception) {            
+        } catch (SQLException exception) {
             System.out.println(exception.getMessage());
         }
         return this.clientes;
 
     }
 
+    public void actualizarCliente(Cliente cliente) {
+
+        //  UPDATE clientes SET emailCliente = 'cliente.getEmail()', 
+        //  nombreCliente = cliente.getNombre(), apellidosCliente = cliente.getApellidos(), 
+        //  contraseniaCliente = cliente.getContrasenia(), usuarioActivo = cliente.isActivo() )  
+         
+        //  WHERE (dniCliente = 'cliente.getDni');
+
+         
+         try  {
+
+            Connection conexion = DriverManager.getConnection(URL, USER, PASSWORD);
+            Statement sentencia = conexion.createStatement();
+
+            String sqlSentencia = "UPDATE clientes SET emailCliente=\'" + cliente.getEmail() + "\', nombreCliente = \'" + cliente.getNombre() +
+            "\', apellidosCliente = \'" + cliente.getApellidos() + "\', contraseniaCliente = \'" + cliente.getContrasenia() + "\', usuarioActivo = " + cliente.isActivo() +
+               " WHERE (dniCliente =\'" + cliente.getDNI() +"\');";
+            
+            
+            sentencia.executeUpdate(sqlSentencia);
+            conexion.close();
+
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+           
+        }
 }

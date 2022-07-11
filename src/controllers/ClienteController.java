@@ -14,6 +14,55 @@ public class ClienteController {
         this.clienteService = clienteService;
     }
 
+
+
+
+
+
+    public void modificarCliente(){
+        Scanner scanner = new Scanner(System.in);
+        HashMap<String, Cliente> clientes = clienteService.obtenerClientes();
+
+
+        System.out.println("Introduce el identificador del cliente que deseas modificar");
+        mostrarClientes();
+        String idClienteSelect = scanner.nextLine();
+
+        if(clientes.containsKey(idClienteSelect)){
+
+            String emailNuevo = pedirEmailCliente();
+            String nombreNuevo = pedirNombreCliente();
+            String apellidosNuevos = pedirApellidosCliente();
+            String contraseniaNueva = pedirContraseniaCliente();
+            boolean activacionNueva = activarCliente();
+
+            clienteService.setDatosCliente(clientes, idClienteSelect, emailNuevo, nombreNuevo, apellidosNuevos,
+             contraseniaNueva, activacionNueva);
+
+
+        }else{
+            System.out.println("El cliente no existe");
+            modificarCliente();
+        }
+    }
+
+    
+
+    
+
+
+    public boolean activarCliente(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Deseas activar el cliente?");
+        String activacion = scanner.nextLine();
+
+        if(activacion.toLowerCase().equals("si"))
+        return true;
+        else
+        return false;
+    }
+
+
     public void mostrarClientesActivos() {
         for (Entry<String, Cliente> cliente : this.clienteService.obtenerClientes().entrySet()) {
 

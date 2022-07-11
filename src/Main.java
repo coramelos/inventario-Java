@@ -17,28 +17,27 @@ public class Main {
     private static final int MODIFICAR_PRODUCTO = 7;
     private static final int REALIZAR_PEDIDO = 8;
     private static final int SALIR = 9;
-    
-    
+
     private static ClienteController clienteController;
     private static ClienteService clienteService;
     private static ProductoController productoController;
     private static ProductoService productoService;
     private static PedidoController pedidoController;
     private static PedidoService pedidoService;
-    
+
     public static void main(String[] args) throws Exception {
 
         int opcion = 0;
         iniciarServices();
-       
+
         do {
             opcion = menu();
             realizarMenu(opcion);
-        } while (opcion != SALIR);  
+        } while (opcion != SALIR);
 
     }
 
-    public static void iniciarServices(){
+    public static void iniciarServices() {
         clienteService = new ClienteService();
         clienteController = new ClienteController(clienteService);
         productoService = new ProductoService();
@@ -47,8 +46,6 @@ public class Main {
         pedidoController = new PedidoController(pedidoService);
 
     }
-
-
 
     public static int menu() {
         Scanner scanner = new Scanner(System.in);
@@ -67,36 +64,38 @@ public class Main {
     public static void realizarMenu(int opcion) {
 
         switch (opcion) {
-            case NUEVO_CLIENTE: 
-                  clienteController.crearCliente();         
+            case NUEVO_CLIENTE:
+                clienteController.crearCliente();
                 break;
 
-            case NUEVO_PRODUCTO: 
-            productoController.crearProducto();               
+            case NUEVO_PRODUCTO:
+                productoController.crearProducto();
                 break;
 
             case MOSTRAR_CLIENTES_ACTIVOS:
-            clienteController.mostrarClientesActivos();                
+                clienteController.mostrarClientesActivos();
                 break;
 
             case MOSTAR_TODOS_CLIENTES:
-            clienteController.mostrarClientes();               
+                clienteController.mostrarClientes();
                 break;
 
-            case MOSTRAR_TODOS_PRODUCTOS: 
-            productoController.mostrarProductos();              
+            case MOSTRAR_TODOS_PRODUCTOS:
+                productoController.mostrarProductos();
                 break;
 
-            case MODIFICAR_CLIENTE:                
+            case MODIFICAR_CLIENTE:
+            clienteController.modificarCliente();
+        
                 break;
 
-            case MODIFICAR_PRODUCTO:                
+            case MODIFICAR_PRODUCTO:
                 break;
 
-            case REALIZAR_PEDIDO:                
+            case REALIZAR_PEDIDO:
                 break;
 
-            case SALIR:               
+            case SALIR:
                 System.out.println("¡Hasta la próxima¡");
                 break;
 
