@@ -1,5 +1,8 @@
+import java.util.HashMap;
 import java.util.Scanner;
 
+import classes.Cliente;
+import classes.Producto;
 import controllers.ClienteController;
 import controllers.PedidoController;
 import controllers.ProductoController;
@@ -93,6 +96,10 @@ public class Main {
                 break;
 
             case REALIZAR_PEDIDO:
+            HashMap<String, Cliente> clientes = clienteService.obtenerClientes();
+            HashMap<String, Producto> productos = productoService.obtenerProductos();
+            pedidoController.realizarPedido(clientes, productos);
+            
                 break;
 
             case SALIR:
