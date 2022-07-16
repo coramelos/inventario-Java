@@ -28,11 +28,11 @@ public class ProductoController {
     }
 
     public void crearProducto() {
-        String numeroRreferencia = pedirReferencia();
-        String nombre = pedirNomre();
+        String numeroReferencia = pedirReferencia();
+        String nombre = pedirNombre();
         float precio = pedirPrecio();
         int stock = pedirStock();
-        productoService.crearProducto(numeroRreferencia, nombre, precio, stock);
+        productoService.crearProducto(numeroReferencia, nombre, precio, stock);
     }
 
 
@@ -43,7 +43,7 @@ public class ProductoController {
 
     }
 
-    public String pedirNomre(){
+    public String pedirNombre(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Introduce el nombre del producto");
         return scanner.nextLine();
@@ -75,7 +75,7 @@ public class ProductoController {
 
         if(productos.containsKey(idProductoSelect)){
 
-            String nombreNuevo = pedirNomre();
+            String nombreNuevo = pedirNombre();
             float precioNuevo = pedirPrecio();
             int stockNuevo = pedirStock();
 

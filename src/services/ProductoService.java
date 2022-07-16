@@ -13,10 +13,10 @@ public class ProductoService {
         this.productoRepository = new ProductoRepository();
     }
 
-    public void crearProducto(String numeroRreferencia, String nombre,
-            Float precio, int stock) {
+    public void crearProducto(String numeroReferencia, String nombre,
+            float precio, int stock) {
 
-        Producto producto = new Producto(numeroRreferencia, nombre, precio, stock);
+        Producto producto = new Producto(numeroReferencia, nombre, precio, stock);
         this.productoRepository.insertarProducto(producto);
 
     }

@@ -33,7 +33,6 @@ public class ProductoRepository {
                     + producto.getNombre() +
                     "\'," + producto.getPrecio() + "," + producto.getNombre() + ");";
 
-            System.out.println("x");
             sentencia.executeUpdate(sqlSentencia);
             conexion.close();
 

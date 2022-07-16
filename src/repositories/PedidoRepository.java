@@ -24,10 +24,18 @@ public class PedidoRepository {
            
             String sqlSentencia = "INSERT INTO pedidos (cantidad,dniCliente,referenciaProducto) VALUES ("
                     + cantidad + ",\'" + clienteSeleccionado.getDNI() + "\',\'" + productoSeleccionado.getNumeroReferencia() + "\');";
+                    
 
 
+           int stockNuevo = productoSeleccionado.getStock() - cantidad;
+               
+
+            String sentenciaStock = "UPDATE productos SET stock = " + stockNuevo + " WHERE numeroReferencia =\'" 
+             +  productoSeleccionado.getNumeroReferencia() +"\';";
+    
 
             sentencia.executeUpdate(sqlSentencia);
+            sentencia.executeUpdate(sentenciaStock);
             conexion.close();
 
         } catch (SQLException exception) {

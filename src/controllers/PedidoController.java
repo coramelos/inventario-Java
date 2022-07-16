@@ -29,7 +29,7 @@ public class PedidoController {
                 if(hayStock)
                 { 
                     this.pedidoService.realizarPedido(clienteSeleccionado, productoSeleccionado, cantidad);
-                   
+                   //this.pedidoService.actualizarStock(productoSeleccionado, cantidad);
                 }else{
                     System.out.println("Ha superado el límite máximo permitido");
                 }  
@@ -37,9 +37,7 @@ public class PedidoController {
             }
         }
 
-        // crear peido en la base de datos asociado al cliente
-
-        // actualizar stock del producto
+        
 
     }
 
